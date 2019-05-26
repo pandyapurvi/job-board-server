@@ -1,0 +1,7 @@
+<h1>All Seekers Profile</h1>
+
+<h2><% @seekers.each do |seeker| %></h2>
+
+<%= link_to seeker.name, seeker_path(seeker.id) %>
+
+<% end %>

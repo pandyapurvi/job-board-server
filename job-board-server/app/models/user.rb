@@ -14,6 +14,6 @@
 class User < ApplicationRecord
   has_secure_password
   # validates :username, :presence => true, :uniqueness => true
-  belongs_to :seeker
-  belongs_to :employer
+  belongs_to :seeker, :optional=> true
+  belongs_to :employer, :optional=> true
 end

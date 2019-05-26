@@ -1,0 +1,20 @@
+<h1><%= @seeker.name %></h1>
+
+<ul>
+
+  <li>Email-id: <%= @seeker.emailid %></li>
+  <li>Phone number: <%= @seeker.pnone %></li>
+  <li>Social link(LinkedIn/Github):<%= @seeker.social_link %></li>
+  <li>Resume: <%= @seeker.resume %></li>
+  <li>Cover Letter: <%= @seeker.cover_letter %></li>
+  <li>Total years of Experience: <%= @seeker.experience_year %></li>
+  <li>Notice period: <%= @seeker.notice %></li>
+  <li>Current Designation: <%= @seeker.current_title %></li>
+</ul>
+
+<div >
+  <%# <% if @current_user.employer? %> %>
+  <%= link_to 'Edit profile', edit_seeker_path(@seeker.id) %>
+  <%= link_to 'Delete profile', seeker_path(@seeker.id), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+  <%# <% end %> %>
+  </div>

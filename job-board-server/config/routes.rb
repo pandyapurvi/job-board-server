@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get 'session/new'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # get 'session/new'
+  resources :jobs
+  resources :seekers
 end

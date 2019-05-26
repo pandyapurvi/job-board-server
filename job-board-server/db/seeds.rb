@@ -26,3 +26,9 @@ e1 = Employer.create(:company_name => 'Domain', :compamy_type => 'IT technology'
 
 Application.destroy_all
 a1 = Application.create(:name => 'Johny',:resume => 'coming', :cover_letter => 'coming')
+
+
+# //////Associations////////
+
+e1.jobs << j1
+e1.jobs << j2
