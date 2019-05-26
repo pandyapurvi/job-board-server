@@ -1,0 +1,18 @@
+<h1><%= @employer.company_name %></h1>
+
+<ul>
+
+  <li>Type of Company: <%= @employer.compamy_type %></li>
+  <li>Description: <%= @employer.description %></li>
+  <li>Compnay website<%= @employer.website %></li>
+  <li>Size of the company <%= @employer.size %></li>
+  <li>Total Employee: <%= @employer.no_employee %></li>
+  <li>Location: <%= @employer.city %></li>
+</ul>
+
+<div >
+  <%# <% if @current_user.employer? %> %>
+  <%= link_to 'Edit profile', edit_employer_path(@employer.id) %>
+  <%= link_to 'Delete profile', employer_path(@employer.id), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+  <%# <% end %> %>
+  </div>

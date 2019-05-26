@@ -1,18 +1,24 @@
 
-<%= form_for @car do |f| %>
+<%= form_for @seeker do |f| %>
 
 <%= f.label :name %>
 <%= f.text_field :name %>
-<%= f.label :image %>
-<%= f.text_field :image %>
-<%= f.label :seat %>
-<%= f.number_field :seat %>
-<%= f.label :price %>
-<%= f.text_field :price %>
-<%= f.label :brand_id %>
-<%= f.select :brand_id, Brand.pluck(:name,:id), :include_blank => true %>
-<%= f.label :model_id %>
-<%= f.select :model_id, Model.pluck(:name,:id), :include_blank => true %>
+<%= f.label :emailid %>
+<%= f.text_field :emailid %>
+<%= f.label :pnone %>
+<%= f.number_field :pnone %>
+<%= f.label :social_link %>
+<%= f.text_field :social_link %>
+<%= f.label :resume %>
+<%= f.text_field :resume %>
+<%= f.label :cover_letter %>
+<%= f.text_field :cover_letter %>
+<%= f.label :experience_year %>
+<%= f.number_field :experience_year ,:min=>'0' %>
+<%= f.label :notice %>
+<%= f.text_field :notice %>
+<%= f.label :current_title %>
+<%= f.text_field :current_title %>
 
 <%= f.submit %>
 

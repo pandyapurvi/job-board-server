@@ -1,0 +1,7 @@
+<h1>All employers Profile</h1>
+
+<h2><% @employers.each do |employer| %></h2>
+
+<%= link_to employer.company_name, employer_path(employer.id) %>
+
+<% end %>
