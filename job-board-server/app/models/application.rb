@@ -13,4 +13,6 @@
 #
 
 class Application < ApplicationRecord
+  belongs_to :job, :optional => true
+  belongs_to :seeker, :optional => true
 end

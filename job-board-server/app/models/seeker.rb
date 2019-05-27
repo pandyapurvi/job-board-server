@@ -14,8 +14,10 @@
 #  current_title   :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
 
 class Seeker < ApplicationRecord
   has_one :user_id
+  has_many :applications
 end

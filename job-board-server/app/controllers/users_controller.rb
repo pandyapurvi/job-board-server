@@ -1,24 +1,42 @@
 class UsersController < ApplicationController
-  before_action :check_for_admin, :only => [:index]
-  def index
-  @users = User.all
-  end
 
-  def new
-      @user = User.new
-    end
+  def create
+    logger.info "============== ============ CREATE ============== ============"
+    logger.info params
+    logger.info params[:password]
+    #logger.info user_params
+    user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    user.update(:employer => false)
+    user.update(:name => params[:name])
 
-    def create
-    @user = User.new user_params
-    if @user.save
-      #this returns a boolean so we can pose it as a question
-      redirect_to root_path
+    if user.save
+      render json: {status: 'User created successfully', user_id: user.id, employer: user.employer, name: user.name, email: user.email }, status: :created
     else
-      render :new #using render allows error messages to show
+      render json: { errors: user.errors.full_messages }, status: :bad_request
     end
   end
-    private
+
+
+  def login
+    logger.info "============== ============ LOGIN ============== ============"
+    logger.info params
+    logger.info params[:email]
+    logger.info params[:password]
+
+    user = User.find_by(email: params[:email].to_s.downcase)
+
+    if user && user.authenticate(params[:password])
+        auth_token = JsonWebToken.encode({user_id: user.id})
+        render json: {auth_token: auth_token, user_id: user.id, employer: user.employer, name: user.name, email: user.email }, status: :ok
+        #render json: {status: 'User logged in successfully'}, status: :ok
+    else
+      render json: {error: 'Invalid username / password'}, status: :unauthorized
+    end
+  end
+
+  private
+
   def user_params
-    params.require(:user).permit(:email,:password,:password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

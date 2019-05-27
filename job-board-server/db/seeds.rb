@@ -1,6 +1,6 @@
 User.destroy_all
-u1 = User.create(:email => 'harsh@gmail.com', :password => '12345')
-u2 = User.create(:email => 'purvi@ga.co', :password => '12345', :employer => true)
+# u1 = User.create(:email => 'harsh@gmail.com', :password => '12345')
+# u2 = User.create(:email => 'purvi@ga.co', :password => '12345', :employer => true)
 
 Job.destroy_all
 j1 = Job.create(:title => 'Graduate Software Enginner', :pod => '21/05/2019', :description => 'You will have a Bachelor’s degree in IT or technology-related field.

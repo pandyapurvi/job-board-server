@@ -14,8 +14,10 @@
 #  city         :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  employer_id  :integer
 #
 
 class Job < ApplicationRecord
   belongs_to :employer, :optional => true
+  has_many :applications
 end

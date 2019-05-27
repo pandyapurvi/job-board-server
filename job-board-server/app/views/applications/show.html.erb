@@ -1,0 +1,15 @@
+<h1><%= @application.name %></h1>
+
+<ul>
+
+  <li>Resume: <%= @application.resume %></li>
+  <li>Cover Letter <%= @application.cover_letter %></li>
+
+</ul>
+
+<div >
+  <%# <% if @current_user.employer? %> %>
+  <%= link_to 'Edit application', edit_application_path(@application.id) %>
+  <%= link_to 'Delete application', application_path(@application.id), :method => 'delete', :data => {:confirm => 'Are you sure?'} %>
+  <%# <% end %> %>
+  </div>

@@ -1,0 +1,7 @@
+<h1>All Applications</h1>
+
+<h2><% @applications.each do |application| %></h2>
+
+<%= link_to application.name, application_path(application.id) %></br></br>
+
+<% end %>
