@@ -13,4 +13,11 @@ Rails.application.routes.draw do
       post 'login'
     end
   end
+
+  resources :seekers do
+    collection do
+      post 'index'
+    end
+  end
+
 end

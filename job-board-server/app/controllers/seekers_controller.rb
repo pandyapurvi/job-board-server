@@ -1,7 +1,17 @@
 class SeekersController < ApplicationController
+# before_action :set_secret, only: [:show, :edit, :update, :destroy]
+
+  # def index
+  #   @seekers = Seeker.all
+  #   render json: @seekers
+  # end
 
   def index
     @seekers = Seeker.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @seekers }
+    end
   end
 
   def show
@@ -13,8 +23,16 @@ class SeekersController < ApplicationController
   end
 
   def create
-    seeker = Seeker.create seeker_params
-    redirect_to seekers_path
+    seeker = Seeker.new seeker_params
+    respond_to do |format|
+      if @seeker.save
+        format.html { redirect_to @seeker }
+        format.json { render :json => @seeker }
+      else
+        format.html { render :new }
+        format.json { render json: @seeker.errors }
+      end
+    end
   end
 
   def edit
@@ -23,14 +41,24 @@ class SeekersController < ApplicationController
 
   def update
     seeker = Seeker.find params[:id]
-    seeker.update seeker_params
-    redirect_to seeker_path
+    respond_to do |format|
+      if seeker.update seeker_params
+        format.html { redirect_to @seeker }
+        format.json { render :json => @seeker }
+      else
+        format.html { render :edit }
+        format.json { render json: @seeker.errors}
+      end
+    end
   end
 
   def destroy
     seeker = Seeker.find params[:id]
     seeker.destroy
-    redirect_to seekers_path
+    respond_to do |format|
+      format.html { redirect_to seekers_path }#seelers_url?
+    format.json { head :no_content }
+    end
   end
   private
   def seeker_params

@@ -18,6 +18,6 @@
 #
 
 class Seeker < ApplicationRecord
-  has_one :user_id
+  has_one :user
   has_many :applications
 end
